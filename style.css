@@ -7,14 +7,14 @@
 
 body {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     background: #002C54;
     padding: 0 10px;
 }
-main{
+/* main{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +47,7 @@ footer{
         font-weight: 500;
         font-style: italic;
     }
-}
+} */
 
 .container {
     width: 850px;
@@ -55,12 +55,14 @@ footer{
     display: flex;
     gap: 70px;
     align-items: flex-end;
+    justify-content: space-between;
     padding: 60px 40px;
     border-radius: 10px;
 
     .game-box {
         .hangman-box {
             img {
+                user-select: none;
                 max-width: 270px;
             }
 
@@ -120,8 +122,8 @@ footer{
             margin-top: 40px;
 
             button {
-                width: calc(100%/9 - 5px);
                 padding: 7px;
+                width: calc(100%/9 - 5px);
 
                 &[disabled] {
                     opacity: 0.6;
@@ -137,6 +139,7 @@ footer{
 :where(.game-modal, .keyboard) button {
     color: #fff;
     font-weight: 600;
+    font-size: 1rem;
     background: #C5001A;
     text-transform: uppercase;
     cursor: pointer;
@@ -196,8 +199,6 @@ footer{
 
         button {
             padding: 12px 23px;
-
-
         }
     }
 
@@ -206,22 +207,43 @@ footer{
 .game-modal.show {
     opacity: 1;
     pointer-events: auto;
+    transition: opacity 0.4s 0.4s ease;
 }
 
 @media (max-width:782px) {
-    .container {
-        flex-direction: column;
-        /* padding: 30px 15px; */
-        align-items: center;
-    }
-
-    .hangman-box {
-        img {
+    @media (max-width: 782px) {
+        .container {
+            flex-direction: column;
+            padding: 30px 15px;
+            align-items: center;
+        }
+        .hangman-box img {
             max-width: 200px;
         }
-
-        h1 {
+        .hangman-box h1 {
             display: none;
+        }
+        .game-box h4 {
+            font-size: 1rem;
+        }
+        .word-display .letter {
+            margin-bottom: 35px;
+            font-size: 1.7rem;
+        }
+        .word-display .letter.guessed {
+            margin: -35px 0 25px;
+        }
+        .game-modal img {
+            max-width: 120px;
+        }
+        .game-modal h4 {
+            font-size: 1.45rem;
+        }
+        .game-modal p {
+            font-size: 1.1rem;
+        }
+        .game-modal button {
+            padding: 10px 18px;
         }
     }
 }
