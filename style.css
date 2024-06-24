@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #002C54;
+    padding: 0 10px;
+}
+
+header {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 0;
+
+    h1 {
+        color: #FDF6F6;
+        margin-bottom: 10px;
+        font-size: 40px;
+        font-style: italic;
+    }
+
+    marquee {
+        color: #FDF6F6;
+        font-style: italic;
+        font-size: 20px;
+    }
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    h4{
+        color: #FDF6F6;
+        font-weight: 500;
+        font-style: italic;
+    }
+}
+
+.container {
+    width: 850px;
+    background: #FDF6F6;
+    display: flex;
+    gap: 70px;
+    align-items: flex-end;
+    padding: 60px 40px;
+    border-radius: 10px;
+
+    .game-box {
+        .hangman-box {
+            img {
+                max-width: 270px;
+            }
+
+            h1 {
+                font-size: 1.45rem;
+                margin-top: 20px;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+
+        .word-display {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            align-items: center;
+            justify-content: center;
+
+            .letter {
+                width: 28px;
+                border-bottom: 3px solid #000;
+                margin-bottom: 40px;
+                font-size: 2rem;
+                font-weight: 600;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            .guessed {
+                border-color: transparent;
+                margin: -40px 0 35px;
+            }
+        }
+
+        h4 {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+
+            b {
+                font-weight: 600;
+            }
+        }
+
+        .guesses-text {
+            b {
+                color: #ff0000;
+            }
+        }
+
+        .keyboard {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+
+            button {
+                width: calc(100%/9 - 5px);
+                padding: 7px;
+
+                &[disabled] {
+                    opacity: 0.6;
+                    pointer-events: none;
+                }
+
+            }
+        }
+    }
+
+}
+
+:where(.game-modal, .keyboard) button {
+    color: #fff;
+    font-weight: 600;
+    background: #C5001A;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
+    border-radius: 4px;
+    border: none;
+}
+
+:where(.game-modal, .keyboard) button:hover {
+    background: #8286c9;
+
+}
+
+.game-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.4s ease;
+
+    .content {
+        background: #fff;
+        max-width: 420px;
+        width: 100%;
+        text-align: center;
+        border-radius: 10px;
+        padding: 30px;
+
+        img {
+            max-width: 130px;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            font-size: 1.53rem;
+        }
+
+        p {
+            font-size: 1.15rem;
+            margin: 15px 0 30px;
+            font-weight: 500;
+
+            b {
+                color: #002C54;
+                font-weight: 600;
+            }
+        }
+
+        button {
+            padding: 12px 23px;
+
+
+        }
+    }
+
+}
+
+.game-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width:782px) {
+    .container {
+        flex-direction: column;
+        padding: 30px 15px;
+        align-items: center;
+    }
+
+    .hangman-box {
+        img {
+            max-width: 200px;
+        }
+
+        h1 {
+            display: none;
+        }
+    }
+}
